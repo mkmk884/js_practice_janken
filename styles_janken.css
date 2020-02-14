@@ -1,0 +1,16 @@
+@charset "utf-8";
+html{
+  width: 100%;
+}
+body{
+  background-color:#f0fff0;
+  margin-right: auto;
+  margin-left : auto;
+  width: 35%;
+}
+h4{
+  padding-left: 10%;
+}
+.main{
+  margin-left : 20%;
+}

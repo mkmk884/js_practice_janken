@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>じゃんけんぽん</title>
+    <link rel="stylesheet" href="styles_janken.css" type="text/css"/>
+    <script type = "text/javascript">
+      var name = "じぶん";
+      function str(){
+        var buff = document.getElementById("name").value;
+        if(buff.length != 0){
+          name = buff;
+        }
+        alert(name + "さん！ようこそ！！");
+        document.getElementById("me").innerHTML = name;
+      }
+
+      function random(){
+        var rand = Math.floor(Math.random() * 3);
+        return rand;
+      }
+
+      function janken(ele){
+        var id = ele.id;
+        //相手の手を乱数から決める
+        var opponent_id = random();
+        document.getElementById("azarashi").src = './img/' + opponent_id + '.png';
+        document.getElementById("kirin").src = './img/' + id + '.png';
+        //自分の手を取得し、相手と比較
+        var result = "";
+        var dif = id - opponent_id;
+        if(dif == -1 || dif == 2){
+          result = name + "さんの勝ち！！";
+        }else if (dif == 1 || dif == -2) {
+          result = name + "さん負け…";
+        }else{
+          result = "あいこ！";
+        }
+        document.getElementById("text").innerHTML = result;
+      }
+    </script>
+  </head>
+
+  <body>
+    <form>
+      <input id = "name" type = "text" size = "8">
+      <input type = "button" value = "なまえを入力してね" onClick = "str()"><br><br>
+    </form>
+
+    <h2 id = "text">じゃーんけーん…</h2>
+    <div class="main">
+      <h4>あいて</h4>
+      <img id = "azarashi" src = "./img/zou_azarashi.png" height="150"><br>
+      <img id = "kirin" src = "./img/kirin.png" height="150"><br>
+      <h4 id = "me">じぶん</h4>
+    </div>
+
+    <h3>選んでね↓</h3><br>
+    <img id = "0" src = "./img/0.png" height="100" onClick = "janken(this)">
+    <img id = "1" src = "./img/1.png" height="100" onClick = "janken(this)">
+    <img id = "2" src = "./img/2.png" height="100" onClick = "janken(this)">
+
+  </body>
+</html>
